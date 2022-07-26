@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "About Sharks" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "About Sharks" %>">  
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%# Specifies valid sources for JS. Part of Content Security Policy. %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%# 
+      Changing from javascript_include_tag to the below will help us work with the js in /packs 
+      rather than the default asset pipeline 
+    %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'%>
+  </head>
+
+  <body>
+  <header>
+    <%= render 'layouts/navigation' %>
+  </header>
+  <main role="main">
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </main>
+  </body>
+</html>

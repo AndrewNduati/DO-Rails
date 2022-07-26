@@ -1,0 +1,9 @@
+ <div data-controller="posts">
+    <%= form_with model: [@shark, @shark.posts.build], data: { action: "posts#addBody" } do |form| %>
+        <%= form.text_area :body, data: { target: 'posts.body' }, placeholder: "Your post here" %>
+        <br>
+        <%= form.submit %>
+    <% end %>
+    <ul data-posts-target="add">
+    </ul>
+</div>
